@@ -22,11 +22,14 @@ const sortedBugs = computed(() => {
 <template>
   <div class="total">
     <h2>合計 {{ total.toLocaleString() }}ベル だなも！</h2>
+    <button @click="total = 0">リセット</button>
+    <br><br>
   </div>
   <div class="sort">
     <button @click="sortKey = 'sell'">価格順</button>
-    <button @click="sortKey = 'name'">名前順</button> <br>
-    <button @click="sortAsc = !sortAsc">昇順-降順</button>
+    <button @click="sortKey = 'name'">名前順</button>
+    <button @click="sortKey = 'id'">図鑑順</button><br>
+    <button @click="sortAsc = !sortAsc">{{ sortAsc ? "昇順" : "降順" }}</button>
 
   </div>
   <button v-for="bug in sortedBugs" :key="bug.name" class="bug" @click="total += bug.sell">
